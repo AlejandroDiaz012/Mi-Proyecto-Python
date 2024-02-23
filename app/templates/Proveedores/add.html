@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='boot/css/bootstrap.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styleProveedores.css') }}">
+    <title>Agregar Proveedor</title>
+</head>
+
+<body>
+    <h1>Agregar Proveedor</h1>
+    <form action="{{ url_for('Proveedores.add') }}" method="post">
+        <div class="mb-3">
+            <label for="exampleInputNombreProveedores" class="form-label">Nombre Proveedores</label>
+            <input type="text" name="nombreProveedores" class="form-control" id="exampleInputNombreProveedores"
+                aria-describedby="nombreProveedoresHelp">
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputDireccion1" class="form-label">Direccion Proveedores</label>
+            <input type="text" name="direccionProveedores" class="form-control" id="exampleInputDireccion1">
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputTelefono1" class="form-label">Telefono Proveedores</label>
+            <input type="text" name="telefonoProveedores" class="form-control" id="exampleInputTelefono1">
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputCorreo1" class="form-label">Correo Proveedores</label>
+            <input type="text" name="correoProveedores" class="form-control" id="exampleInputCorreo1">
+        </div>
+        <button type="submit" class="btn btn-primary">Agregar Proveedor</button>
+    </form>
+</body>
+
+</html>

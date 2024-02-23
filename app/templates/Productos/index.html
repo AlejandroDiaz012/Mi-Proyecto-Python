@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='boot/css/bootstrap.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styleProductos.css') }}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <script src="{{ url_for('static', filename='boot/js/jquery-3.7.1.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='boot/js/bootstrap.bundle.js') }}"></script>
+
+
+    <title>Producto</title>
+</head>
+
+<body>
+    <h1>Lista de Producto </h1>
+    <div class="dropdown">
+        <button class="btn btn-info dropdown-toggle" type="button" data-bs-toggle="dropdown"
+            aria-expanded="false">
+            Tablas
+        </button>
+        <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="{{ url_for('Productos1.index') }}">Ir a Productos</a></li>
+            <li><a class="dropdown-item" href="{{ url_for('Productos.add') }}">Agregar Productos</a></li>
+            <li><a class="dropdown-item" href="{{ url_for('Empleados.index') }}">Empleados</a></li>
+            <li><a class="dropdown-item" href="{{ url_for('Productos.index') }}">Productos</a></li>
+            <li><a class="dropdown-item" href="{{ url_for('Clientes.index') }}">Clientes</a></li>
+            <li><a class="dropdown-item" href="{{ url_for('Compras.index') }}">Compras</a></li>
+            <li><a class="dropdown-item" href="{{ url_for('DetalleCompras.index') }}">DetalleCompras</a></li>
+            <li><a class="dropdown-item" href="{{ url_for('Ventas.index') }}">Ventas</a></li>
+            <li><a class="dropdown-item" href="{{ url_for('DetalleVentas.index') }}">DetalleVentas</a></li>
+            <li><a class="dropdown-item" href="{{ url_for('Proveedores.index') }}">Proveedores</a></li>
+            <li>
+                <form class="d-flex" role="searc
+                h" action="{{ url_for('Auth.logout') }}">
+                    <button class="btn btn-outline-info" type="submit">Cerrar Sesión</button>
+                </form>
+            </li>
+        </ul>
+    </div>
+    <div>
+       
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">Id Productos</th>
+                        <th scope="col">Nombre Productos</th>
+                        <th scope="col">Descripcion Productos</th>
+                        <th scope="col">Precio Productos</th>
+                        <th scope="col">Fecha Caducidad Productos</th>
+                        <th scope="col">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for Productos in data %}
+                    <tr>
+                        <td>{{ Productos.idProductos }}</td>
+                        <td>{{ Productos.nombreProductos }}</td>
+                        <td>{{ Productos.descripcionProductos }}</td>
+                        <td>{{ Productos.precioProductos }}</td>
+                        <td>{{ Productos.fechaCaducidadProductos }}</td>
+                       
+                        <td>
+                            <div class="btn-group" role="group">
+                                <a href="{{ url_for('Productos.edit', idProductos=Productos.idProductos) }}"
+                                    class="btn btn-warning">Editar</a>
+                                <a href="{{ url_for('Productos.delete', idProductos=Productos.idProductos) }}"
+                                    class="btn btn-danger">Eliminar</a>
+                            </div>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        
+        
+        
+
+</body>
+
+</html>

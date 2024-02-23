@@ -1,0 +1,80 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0px;
+    justify-content: space-around;
+    padding: 0;
+    background-color:beige;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+
+.miDiv {
+    background-color: #0ccbdf42;
+    box-shadow: 0 0 10px rgb(239 26 26 / 44%);
+    border-radius: 8px;
+    padding: 20px;
+    margin: 20px;
+    width: 637px;
+    display: flex;
+    flex-direction: column;
+    HEIGHT: 675px;
+    
+}
+.editar {
+    background-color: khaki;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    padding: 20px;
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+}
+.cuadro{
+    width: 560px;
+}
+.figura{
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+h1 {
+    color: #333;
+    text-align: center;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background-color: #00c3ff;
+    color: white;
+}
+
+a {
+
+    text-decoration: none;
+    padding: 5px 15px;
+    margin-right: 10px;
+    border: 1px solid #03e2ff;
+    color: crimson;
+    border-radius: 4px;
+    display: inline-block;
+
+}
+
+a:hover {
+    background-color: #0ccbdf42;
+    color: white;
+}

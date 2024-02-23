@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='boot/css/bootstrap.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styleDetalleC.css') }}">
+    <title>Editar Detalle Compras</title>
+</head>
+<body>
+    <h1>Editar Detalle Compras</h1>
+    <form action="{{ url_for('DetalleCompras.edit', idDetalleCompras=detalle_compra.idDetalleCompras) }}" method="post">
+        <div class="mb-3">
+            <label for="exampleInputCantidadDetalle" class="form-label">Cantidad Detalle</label>
+            <input type="int" id="cantidadDetalle" name="cantidadDetalle" class="form-control" value="{{ detalle_compra.cantidadDetalle }}" id="exampleInputCantidadDetalle"
+              aria-describedby="cantidadDetalleHelp">
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputSub1" class="form-label">subTotal Detalle</label>
+            <input type="int" id="subTotalDetalle" name="subTotalDetalle" class="form-control"  value="{{ detalle_compra.subTotalDetalle }}" id="exampleInputSub1">
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputId1" class="form-label">Id Productos</label>
+            <input type="int" id="idProductos" name="idProductos" class="form-control"  value="{{ detalle_compra.idProductos }}" id="exampleInputId1">
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputId1" class="form-label">Id Compras</label>
+            <input type="int" id="idCompras" name="idCompras" class="form-control"  value="{{ detalle_compra.idCompras }}" id="exampleInputId1">
+          </div>
+        <button type="submit" class="btn btn-primary">Actualizar Detalle Compra</button>
+    </form>
+</body>
+</html>
+
+

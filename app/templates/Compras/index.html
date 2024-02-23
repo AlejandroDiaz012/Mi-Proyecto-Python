@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='boot/css/bootstrap.css') }}">
+    <script src="{{ url_for('static', filename='boot/js/jquery-3.7.1.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='boot/js/bootstrap.bundle.js') }}"></script>
+    <title>Compra</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            color: #007bff;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #0ccbdf;
+            color: #fff;
+            font-weight: bold;
+        }
+
+        td {
+            color: #333;
+        }
+
+        td a {
+            color: #007bff;
+            margin-right: 10px;
+            transition: color 0.3s ease;
+        }
+
+        td a:hover {
+            text-decoration: none;
+            color: #0056b3;
+        }
+
+        .dropdown {
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        .dropdown-toggle {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .dropdown-menu {
+            min-width: 200px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .dropdown-item {
+            color: #333;
+            padding: 10px 20px;
+            transition: background-color 0.3s ease;
+        }
+
+        .dropdown-item:hover {
+            background-color: #0ccbdf;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <div class="container">
+        <h1>Lista de Compra</h1>
+        <div class="dropdown">
+            <button class="btn btn-info dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Tablas
+            </button>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="{{ url_for('Empleados.index') }}">Empleados</a></li>
+                <li><a class="dropdown-item" href="{{ url_for('Productos.index') }}">Productos</a></li>
+                <li><a class="dropdown-item" href="{{ url_for('Clientes.index') }}">Clientes</a></li>
+                <li><a class="dropdown-item" href="{{ url_for('Compras.index') }}">Compras</a></li>
+                <li><a class="dropdown-item" href="{{ url_for('DetalleCompras.index') }}">DetalleCompras</a></li>
+                <li><a class="dropdown-item" href="{{ url_for('Ventas.index') }}">Ventas</a></li>
+                <li><a class="dropdown-item" href="{{ url_for('DetalleVentas.index') }}">DetalleVentas</a></li>
+                <li><a class="dropdown-item" href="{{ url_for('Proveedores.index') }}">Proveedores</a></li>
+                <li>
+                    <form class="d-flex" role="search" action="{{ url_for('Auth.logout') }}">
+                        <button class="btn btn-outline-info" type="submit">Cerrar Sesión</button>
+                    </form>
+                </li>
+            </ul>
+        </div>
+        <table>
+            <tr>
+                <th>Id Compra</th>
+                <th>Fecha Compras</th>
+                <th>Cantidad Compras</th>
+                <th>Id Proveedores</th>
+                <th>Id Empleados</th>
+                <th>Acciones</th>
+            </tr>
+            {% for Compras in data %}
+            <tr>
+                <td>{{ Compras.idCompras }}</td>
+                <td>{{ Compras.fechaCompras }}</td>
+                <td>{{ Compras.cantidadCompras }}</td>
+                <td>{{ Compras.idProveedores }}</td>
+                <td>{{ Compras.idEmpleados }}</td>
+                <td>
+                    <a href="{{ url_for('Compras.edit', idCompras=Compras.idCompras) }}"
+                        class="btn btn-warning">Editar</a>
+                    <a href="{{ url_for('Compras.delete', idCompras=Compras.idCompras) }}"
+                        class="btn btn-danger">Eliminar</a>
+                    <!-- Agrega aquí el enlace para eliminar -->
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</body>
+
+</html>

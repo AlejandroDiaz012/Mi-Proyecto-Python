@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='boot/css/bootstrap.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styleProductos.css') }}">
+    <title>Agregar Productos</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f9fa;
+            color: #495057;
+            margin: 20px;
+        }
+
+        h1 {
+            color: #007bff;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+      
+        form {
+            max-width: 500px;
+            margin: auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        form:hover {
+            transform: scale(1.03);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .form-label {
+            font-weight: bold;
+            color: #333;
+        }
+
+        .form-control {
+            margin-bottom: 15px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Agregar Productos</h1>
+    <form action="{{ url_for('Productos.add') }}" method="post" enctype="multipart/form-data">
+        <div class="mb-3">
+            <label for="exampleInputNombreProdutos" class="form-label">Nombre Productos</label>
+            <input type="text" name="nombreProductos" class="form-control" id="exampleInputNombreProductos"
+                aria-describedby="nombreProductosHelp" required>
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputDescripcion1" class="form-label">Descripcion Productos</label>
+            <input type="text" name="descripcionProductos" class="form-control" id="exampleInputDescripcion1"
+                required>
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputPrecio1" class="form-label">Precio Productos</label>
+            <input type="number" name="precioProductos" class="form-control" id="exampleInputPrecio1" required>
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputFecha1" class="form-label">Fecha Caducidad Productos</label>
+            <input type="date" name="fechaCaducidadProductos" class="form-control" id="exampleInputFecha1" required>
+        </div>
+        <div class="mb-3">
+            <label for="img" class="form-label">Imagen:</label>
+            <input type="file" accept=".png, .jpg, .jpeg" name="nombreImagen" required>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Agregar Productos</button>
+    </form>
+</body>
+
+</html>

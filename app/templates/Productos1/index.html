@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='boot/css/bootstrap.css') }}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+        }
+
+        .carrito {
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            padding: 10px;
+            background-color: #0ccbdf;
+            color: #fff;
+            flex-direction: row-reverse;
+            
+        }
+
+        .carri {
+            display: flex;
+        }
+
+        .carrito a {
+            text-decoration: none;
+            color: #fff;
+            margin-right: 10px;
+        }
+
+        .carrito a:hover {
+            text-decoration: underline;
+        }
+
+        .search-form {
+            display: flex;
+            align-items: center;
+            margin-top: 10px;
+        }
+
+        .search-input {
+            width: 200px;
+            margin-right: 10px;
+        }
+
+        .logout-form button {
+            margin-left: 10px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 20px;
+
+        }
+
+        .card {
+            margin-bottom: 20px;
+            transition: transform 0.3s;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+        }
+
+        .card img {
+            max-height: 200px;
+            object-fit: cover;
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+        }
+
+        .card-body {
+            padding: 15px;
+        }
+
+        .card-title {
+            font-size: 1.2rem;
+            margin: 10px 0;
+        }
+
+        .card-text {
+            font-size: 1rem;
+        }
+
+        form {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 10px;
+        }
+
+        .input-group {
+            width:  252px;
+            margin-right: 10px;
+        }
+
+        button {
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
+    </style>
+
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="carrito"  class="card col-md-3 col-sm-6 col-12">
+        <div class="carri">
+
+            <form class="logout-form" role="search" action="{{ url_for('Auth.logout') }}">
+                <button class="btn btn-outline-light" type="submit">Cerrar Sesión</button>
+            </form>
+
+        </div>
+        <form action="{{ url_for('Productos1.buscar') }}" method="get" class="search-form">
+            <input type="text" class="form-control search-input" placeholder="Buscar producto" name="fBuscar">
+            <button class="btn btn-light" type="submit"><i class="bi bi-search"></i></button>
+        </form>
+
+        <a href="{{ url_for('carritos.listar') }}"> {{t}}<i class="bi bi-cart-check" style="font-size: 28px;"></i></a>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            {% if data %}
+            {% for producto in data %}
+            <div class="card col-md-3 col-sm-6 col-12">
+                <img src="{{ url_for('static', filename='imagenes/' ~ producto.nombreImagen) }}" class="card-img-top"
+                    alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">{{producto.nombreProductos}}</h5>
+                    <p class="card-text">{{producto.precioProductos}}</p>
+                    <form action="{{ url_for('carritos.agregar_al_carrito', id = producto.idProductos) }}"
+                        method="post">
+                        <div class="input-group">
+                            <input type="number" name="cantidad" value="1" min="1" class="form-control">
+                            <button type="submit" class="btn btn-success">Agregar al carrito</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            {% endfor %}
+            {%elif resultados %}
+
+            {% for producto in resultados%}
+            <div class="card col-md-3 col-sm-6 col-12">
+                <img src="{{ url_for('static', filename='imagenes/' ~ producto.nombreImagen) }}" class="card-img-top"
+                    alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">{{producto.nombreProductos}}</h5>
+                    <p class="card-text">{{producto.precioProductos}}</p>
+                    <form action="{{ url_for('carritos.agregar_al_carrito', id = producto.idProductos) }}"
+                        method="post">
+                        <div class="input-group">
+                            <input type="number" name="cantidad" value="1" min="1" class="form-control">
+                            <button type="submit" class="btn btn-success">Agregar al carrito</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            {% endfor %}
+            {%endif%}
+
+
+        </div>
+    </div>
+</body>
+
+</html>

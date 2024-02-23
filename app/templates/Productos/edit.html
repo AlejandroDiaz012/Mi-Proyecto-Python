@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='boot/css/bootstrap.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styleProductos.css') }}">
+    <title>Editar Productos</title>
+</head>
+<body>
+    <h1>Editar Productos</h1>
+    <form action="{{ url_for('Productos.edit', idProductos=producto.idProductos) }}" method="post">
+        <div class="mb-3">
+            <label for="exampleInputNombreProductos" class="form-label">Nombre Productos</label>
+            <input type="text" id="nombreProductos" name="nombreProductos" class="form-control"
+              value="{{ producto.nombreProductos }}" id="exampleInputNombreProductos" aria-describedby="nombreProductosHelp">
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputDescripcion1" class="form-label">Descripcion Productos</label>
+            <input type="text" id="descripcionProductos" name="descripcionProductos" class="form-control"
+              value="{{ producto.descripcionProductos }}" id="exampleInputDescripcion1">
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputPrecio1" class="form-label">Precio Productos</label>
+            <input type="int" id="precioProductos" name="precioProductos" class="form-control"
+              value="{{ producto.precioProductos }}" id="exampleInputPrecio1">
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputFecha1" class="form-label">Fecha Caducidad Productos</label>
+            <input type="date" id="fechaCaducidadProductos" name="fechaCaducidadProductos" class="form-control"
+              value="{{ producto.fechaCaducidadProductos }}" id="exampleInputFecha1">
+          </div>
+          <button type="submit" class="btn btn-primary">Actualizar Producto</button>
+    </form>
+</body>
+</html>
+
+

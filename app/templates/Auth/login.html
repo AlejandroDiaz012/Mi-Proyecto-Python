@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='boot/css/bootstrap.css') }}">
+    <script src="{{ url_for('static', filename='boot/js/bootstrap.js') }}"></script>
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Arial', sans-serif;
+            background-image: url("{{ url_for('static', filename='imagenes/imagen1234.gif') }}");
+            /* Ruta de la imagen de fondo */
+            /* Ruta de la imagen de fondo */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            /* Esto fijará el fondo incluso al hacer scroll */
+            font-family: 'Arial', sans-serif;
+        }
+
+        .container {
+            margin-top: 50px;
+        }
+
+        .card {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: #5e6a79 solid;
+        }
+
+        .card:hover {
+            transform: scale(1.03);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .card-header {
+            background-color: #0ccbdf;
+            color: #fff;
+            text-align: center;
+            font-size: 24px;
+            padding: 15px;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+
+        .card-body {
+            padding: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .boton {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .btn-login,
+        .btn-create-account {
+            width: 48%;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            background-color: #0ccbdf;
+        }
+
+        .btn-login:hover,
+        .btn-create-account:hover {
+            background-color: #0056b3;
+        }
+
+        @media (max-width: 768px) {
+
+            .btn-login,
+            .btn-create-account {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+        }
+
+        /* Estilo para la imagen en forma de estrella */
+        .star-image {
+            max-width: 100%;
+            height: auto;
+            max-height: 200px;
+            margin: 0 auto;
+            clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+            transition: transform 0.3s;
+        }
+
+        .star-image:hover {
+            transform: rotate(5deg) scale(1.1);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="row mt-4" style="justify-content: center;
+        align-items: center;
+        margin: 0;">
+            <div class="col-md-6 offset-md-3" style=" margin: 257px auto;">
+                <div class="card">
+                    <div class="card-header">
+                        <h2>Inicio</h2>
+                    </div>
+                    <div class="card-body">
+                        {% with messages = get_flashed_messages(with_categories=true) %}
+                        {% if messages %}
+                        {% for category, message in messages %}
+
+                        <div class="alert alert-{{ category }}" role="alert">{{ message }}</div>
+                        {% endfor %}
+                        {% endif %}
+                        {% endwith %}
+                        <form method="post" action="{{ url_for('Auth.login') }}">
+                            <div class="form-group">
+                                <label for="nombre">Nombre de Usuario</label>
+                                <input type="text" name="nombre" id="nombre" class="form-control mb-3" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="contrasena">Contraseña</label>
+                                <input type="password" name="contrasena" id="contrasena" class="form-control mb-3"
+                                    required>
+                            </div>
+                            <div class="boton">
+                                <button type="submit" class="btn btn-info btn-login">Iniciar Sesión</button>
+                                <a href="{{ url_for('Clientes.add') }}" class="btn btn-info btn-create-account">Crear
+                                    Cuenta</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

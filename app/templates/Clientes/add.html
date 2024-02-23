@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='boot/css/bootstrap.css') }}">
+    <title>Agregar Clientes</title>
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .header-image {
+            width: 100%;
+            height: 200px; /* Ajusta la altura según tus necesidades */
+            background-image: url("{{ url_for('static', filename='imagenes/imagen12.gif') }}");
+            background-size: cover;
+            background-position: center;
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .miDiv {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+            transition: transform 0.3s, box-shadow 0.3s;
+            margin-top: -100px; /* Ajusta según la altura de la imagen */
+            position: relative;
+            z-index: 1;
+        }
+
+        .miDiv:hover {
+            transform: scale(1.03);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #007bff;
+        }
+
+        .form-label {
+            font-weight: bold;
+            color: #333;
+        }
+
+        .cuadro {
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        .btn-primary {
+            background-color: #0ccbdf;
+            border-color: #0ccbdf;
+            width: 100%;
+            transition: background-color 0.3s, border-color 0.3s;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+   
+    <div class="container">
+        
+        <div class="miDiv">
+            <h1>Crear Cuenta</h1>
+            <div class="header-image"></div>
+            <form action="{{ url_for('Clientes.add') }}" method="post">
+                <div class="mb-3">
+                    <label for="exampleInputNombreClientes" class="form-label">Nombre Clientes</label>
+                    <input type="text" name="nombreClientes" class="form-control cuadro" id="exampleInputNombreClientes"
+                        aria-describedby="nombreClientesHelp" required>
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputDireccion1" class="form-label">Direccion Clientes</label>
+                    <input type="text" name="direccionClientes" class="form-control cuadro" id="exampleInputDireccion1"
+                        required>
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputTelefono1" class="form-label">Telefono Clientes</label>
+                    <input type="text" name="telefonoClientes" class="form-control cuadro" id="exampleInputTelefono1"
+                        required>
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputCorreo1" class="form-label">Correo Clientes</label>
+                    <input type="email" name="correoClientes" class="form-control cuadro" id="exampleInputCorreo1"
+                        required>
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputContrasena1" class="form-label">Contrasena Clientes</label>
+                    <input type="password" name="contrasenaClientes" class="form-control cuadro"
+                        id="exampleInputContrasena1" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Crear</button>
+            </form>
+        </div>
+    </div>
+
+</body>
+
+</html>

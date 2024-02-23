@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='boot/css/bootstrap.css') }}">
+    <script src="{{ url_for('static', filename='boot/js/bootstrap.js') }}"></script>
+
+    <title>Factura de Compra</title>
+
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .invoice {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            max-width: 600px;
+            width: 100%;
+        }
+
+        h1 {
+            text-align: center;
+            color: #007bff;
+        }
+
+        .invoice p {
+            font-size: 16px;
+            margin-bottom: 5px;
+
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        .total {
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        button {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+            display: block;
+            margin: auto;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="invoice">
+            <h1>Factura de Compra</h1>
+
+            <!-- Agregar la etiqueta <img> con la ruta de la imagen -->
+
+            <p><strong>Fecha:</strong> {{ new_venta.fechaVentas }}</p>
+            <p><strong>Cliente:</strong> {{ new_venta.clientes.nombreClientes }}</p>
+            <p><strong>Total a pagar:</strong> ${{ new_venta.total }}</p>
+            <p><strong>Id Factura:</strong> {{ new_venta.idVentas }}</p>
+            <!-- Agregar más detalles de la factura según sea necesario -->
+
+            <table>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Cantidad</th>
+                    <th>Sub Total</th>
+                </tr>
+                {% for detalle in detalles %}
+                <tr>
+                    <td>
+                        <div class="nombre">
+                            <p><strong>Producto:</strong> {{ detalle.producto.nombreProductos }}</p>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="nombre">
+                            <p><strong>Cantidad:</strong> {{ detalle.cantidadDetalle }}</p>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="nombre">
+                            <p><strong>Sub Total:</strong> {{ detalle.subTotalDetalle }} <br></p>
+                        </div>
+                    </td>
+                </tr>
+                {% endfor %}
+            </table>
+
+            <p class="total" style="display: flex; flex-direction: row-reverse;">Total a pagar: ${{ new_venta.total }}
+            </p>
+            <button type="button" class="btn btn-outline-info" data-bs-toggle="modal"
+                data-bs-target="#exampleModal">Pagar</button>
+            <!-- Modal -->
+
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">Gracias Por Su Compra</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <p class="total">Total pagado: ${{ new_venta.total }}</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='boot/css/bootstrap.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styleEmpleados.css') }}">
+    <title>Editar Empleados</title>
+</head>
+
+<body>
+    <h1>Editar Empleados</h1>
+    <form action="{{ url_for('Empleados.edit', idEmpleados=empleado.idEmpleados) }}" method="post">
+        <div class="mb-3">
+            <label for="exampleInputNombreEmpleados" class="form-label">Nombre Empleados</label>
+            <input type="text" id="nombreEmpleados" name="nombreEmpleados" class="form-control"
+                value="{{ empleado.nombreEmpleados }}" id="exampleInputNombreEmpleados"
+                aria-describedby="nombreEmpleadosHelp">
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputDireccion1" class="form-label">Direccion Empleados</label>
+            <input type="text" id="direccionEmpleados" name="direccionEmpleados" class="form-control"
+                value="{{ empleado.direccionEmpleados }}" id="exampleInputDireccion1">
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputTelefono1" class="form-label">Telefono Empleados</label>
+            <input type="text" id="telefonoEmpleados" name="telefonoEmpleados" class="form-control"
+                value="{{ empleado.telefonoEmpleados }}" id="exampleInputTelefono1">
+        </div>
+        <button type="submit" class="btn btn-primary">Actualizar Empleado</button>
+    </form>
+</body>
+
+</html>

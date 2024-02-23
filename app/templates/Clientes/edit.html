@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{{ url_for('static', filename='boot/css/bootstrap.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='styleClientes.css') }}">
+  <script src="{{ url_for('static', filename='boot/js/bootstrap.js') }}"></script>
+  <title>Editar Clientes</title>
+</head>
+
+<body>
+  <div class="editar">
+    <h1>Editar Clientes</h1>
+    <form action="{{ url_for('Clientes.edit', idClientes=cliente.idClientes) }}" method="post">
+      <div class="mb-3">
+        <label for="exampleInputNombreClientes" class="form-label">Nombre Clientes</label>
+        <input type="text" id="nombreClientes" name="nombreClientes" class="form-control"
+          value="{{ cliente.nombreClientes }}" id="exampleInputNombreClientes" aria-describedby="nombreClientesHelp">
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputDireccion1" class="form-label">Direccion Clientes</label>
+        <input type="text" id="direccionClientes" name="direccionClientes" class="form-control"
+          value="{{ cliente.direccionClientes }}" id="exampleInputDireccion1">
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputTelefono1" class="form-label">Telefono Clientes</label>
+        <input type="text" id="telefonoClientes" name="telefonoClientes" class="form-control"
+          value="{{ cliente.telefonoClientes }}" id="exampleInputTelefono1">
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputCorreo1" class="form-label">Correo Clientes</label>
+        <input type="text" id="correoClientes" name="correoClientes" class="form-control"
+          value="{{ cliente.correoClientes }}" id="exampleInputCorreo1">
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputContrasena1" class="form-label">Contrasena Clientes</label>
+        <input type="password" id="contrasenaClientes" name="contrasenaClientes" class="form-control"
+          value="{{ cliente.contrasenaClientes }}" id="exampleInputContrasena1">
+      </div>
+      <button type="submit" class="btn btn-primary">Actualizar Cliente</button>
+    </form>
+  </div>
+</body>
+
+</html>

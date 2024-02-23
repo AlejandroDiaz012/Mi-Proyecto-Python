@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{{ url_for('static', filename='boot/css/bootstrap.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='styleCompras.css') }}">
+  <title>Editar Compras</title>
+</head>
+
+<body>
+  <h1>Editar Compras</h1>
+  <form action="{{ url_for('Compras.edit', idCompras=compra.idCompras) }}" method="post">
+    <div class="mb-3">
+      <label for="exampleInputFechaCompras" class="form-label">Fecha Compras</label>
+      <input type="date" id="fechaCompras" name="fechaCompras" class="form-control" value="{{ compra.fechaCompras }}"
+        id="exampleInputFechaCompras" aria-describedby="fechaComprasHelp">
+
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputCantidad1" class="form-label">Cantidad Compras</label>
+      <input type="int" id="cantidadCompras" name="cantidadCompras" class="form-control"
+        value="{{ compra.cantidadCompras }}" id="exampleInputCantidad1">
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputId1" class="form-label">Id Proveedores</label>
+      <input type="int" id="idProveedores" name="idProveedores" class="form-control" value="{{ compra.idProveedores }}"
+        id="exampleInputId1">
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputId1" class="form-label">Id Empleados</label>
+      <input type="int" id="idEmpleados" name="idEmpleados" class="form-control" value="{{ compra.idEmpleados }}"
+        id="exampleInputId1">
+    </div>
+    <button type="submit" class="btn btn-primary">Actualizar Compra</button>
+  </form>
+</body>
+
+</html>
